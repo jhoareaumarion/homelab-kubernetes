@@ -44,13 +44,19 @@ Before deploying, ensure you have:
 helm install cert-manager jetstack/cert-manager --namespace cert-manager --version v1.18.2 --set installCRDs=true
 ```
 
-2. **Deploy OVH Webhook (for DNS challenge) and its secrets**
+2. **Install Sealed Secrets**
+```bash
+helm repo add sealed-secrets https://bitnami-labs.github.io/sealed-secrets
+helm install sealed-secrets -n kube-system --set-string fullnameOverride=sealed-secrets-controller sealed-secrets/sealed-secrets
+```
+
+3.   **Deploy OVH Webhook (for DNS challenge) and its secrets**
 ```bash
 kubectl apply -f ./core/cert-manager-ovh-webhook/sealed-ovh-credentials.yaml
 helm upgrade --install --namespace cert-manager -f ./core/cert-manager-ovh-webhook/values.yaml cm-webhook-ovh cert-manager-webhook-ovh-charts/cert-manager-webhook-ovh
 ```
 
-3. **Deploy ArgoCD**
+4. **Deploy ArgoCD**
 
 ```bash
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
