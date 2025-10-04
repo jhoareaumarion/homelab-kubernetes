@@ -6,7 +6,8 @@ This repository provides a bootstrap setup for a home lab Kubernetes cluster usi
 
 ## Repository Structure
 
-homelab-kubernetes/
+```
+homelab-kubernetes-bootstrap/
 ├── core
 │ ├── argocd
 │ │ ├── ingress
@@ -19,7 +20,7 @@ homelab-kubernetes/
 │ └── values.yaml # Helm chart values for OVH webhook
 ├── LICENSE # Repository license
 └── README.md # This file
-
+```
 
 ---
 
