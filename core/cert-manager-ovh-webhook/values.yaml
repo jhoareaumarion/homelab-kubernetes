@@ -1,5 +1,4 @@
-groupName: ovh.solver.hoareau-marion.eu  # Replace with your group name
-configVersion: 0.0.2
+groupName: ovh.solver.hoareau-marion.eu 
 certManager:
   namespace: cert-manager
   serviceAccountName: cert-manager
@@ -13,8 +12,12 @@ issuers:
     ovhEndpointName: ovh-eu
     ovhAuthenticationMethod: application
     ovhAuthentication:
-      existingSecret: ovh-credentials
-      keyMap:
-        applicationKey: applicationKey
-        applicationSecret: applicationSecret
-        applicationConsumerKey: consumerKey
+      applicationKeyRef:
+        name: ovh-credentials
+        key: applicationKey
+      applicationSecretRef:
+        name: ovh-credentials
+        key: applicationSecret
+      applicationConsumerKeyRef:
+        name: ovh-credentials
+        key: applicationConsumerKey
