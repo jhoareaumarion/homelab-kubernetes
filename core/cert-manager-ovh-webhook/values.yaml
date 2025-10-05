@@ -1,4 +1,5 @@
 groupName: ovh.solver.hoareau-marion.eu 
+configVersion: 0.0.2
 certManager:
   namespace: cert-manager
   serviceAccountName: cert-manager
