@@ -41,6 +41,7 @@ Before deploying, ensure you have:
 1. **Install Cert-Manager**
 
 ```bash
+helm repo add jetstack https://charts.jetstack.io
 helm install cert-manager jetstack/cert-manager --namespace cert-manager --version v1.18.2 --set installCRDs=true
 ```
 
@@ -53,6 +54,7 @@ helm install sealed-secrets -n kube-system --set-string fullnameOverride=sealed-
 3.   **Deploy OVH Webhook (for DNS challenge) and its secrets**
 ```bash
 kubectl apply -f ./core/cert-manager-ovh-webhook/sealed-ovh-credentials.yaml
+helm repo add cert-manager-webhook-ovh-charts https://aureq.github.io/cert-manager-webhook-ovh/
 helm upgrade --install --namespace cert-manager -f ./core/cert-manager-ovh-webhook/values.yaml cm-webhook-ovh cert-manager-webhook-ovh-charts/cert-manager-webhook-ovh
 ```
 
