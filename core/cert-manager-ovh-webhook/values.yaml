@@ -12,7 +12,10 @@ issuers:
     email: letsencrypt.capsule006@simplelogin.com # Replace with your email
     ovhEndpointName: ovh-eu
     ovhAuthenticationMethod: application
-    ovhAuthentication:
+    ovhAuthenticationRef:
+      name: ovh-credentials
+      namespace: cert-manager
+      # Individual key references inside the secret
       applicationKeyRef:
         name: ovh-credentials
         key: applicationKey
