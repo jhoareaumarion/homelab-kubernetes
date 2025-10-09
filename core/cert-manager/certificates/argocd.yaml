@@ -2,7 +2,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: argocd-certificate
-  namespace: cert-manager #argocd
+  namespace: argocd
 spec:
   dnsNames:
     - argocd.hoareau-marion.eu  # Replace with your domain
